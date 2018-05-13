@@ -23,12 +23,13 @@ class Player extends Component {
   }
 
   fetchPlayers = (teamId) => {
-    getPlayers()
+    getPlayers(teamId)
       .then((players) => this.setState({players, loading: false}))
   }
 
   render(){
     const { players, loading } = this.state
+    const { match, location} = this.props
 
     return (
       <div className="container two-column">
@@ -37,6 +38,11 @@ class Player extends Component {
           list={players.map((player) => player.name)} 
           loading={loading}
           {...this.props}/>
+
+          {loading === false && location.pathname === '/players'
+            ? <div className="sidebar-instruction">Select a player</div>
+            : null
+        }
       </div>
     )
   }
