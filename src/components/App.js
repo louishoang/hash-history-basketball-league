@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { 
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Switch
 } from 'react-router-dom'
 import Home from './Home'
 import Player from './Player'
@@ -15,9 +16,13 @@ class App extends Component {
       <Router>
         <div>
           <Navbar/>
-          <Route exact path="/" component={Home}/>
-          <Route path="/players" component={Player}/>
-          <Route path="/teams" component={Team}/>
+
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path="/players" component={Player}/>
+            <Route path="/teams" component={Team}/>
+            <Route render={() => <h1 className="text-center">Page not found!</h1> } />
+          </Switch>
         </div>
       </Router>
     )
