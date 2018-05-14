@@ -49,7 +49,7 @@ class Player extends Component {
 
           const player = players.find((player) => slug(player.name) === match.params.playerId)
           const {
-            name, position, teamId, number, avatar, apg, ppg, rpg, spg
+            name, position, teamId, number, avatar
           } = player
 
           return (
